@@ -26,7 +26,25 @@ pipeline {
                 projectId: env.PROJECT_ID,
                 clusterName: env.CLUSTER_NAME,
                 location: env.LOCATION,
-                manifestPattern: 'k8s/',
+                manifestPattern: 'k8s/api-deploy.yml',
+                credentialsId: env.CREDENTIALS_ID,
+                verifyDeployments: true])
+
+                step([
+                $class: 'KubernetesEngineBuilder',
+                projectId: env.PROJECT_ID,
+                clusterName: env.CLUSTER_NAME,
+                location: env.LOCATION,
+                manifestPattern: 'k8s/api-service.yml',
+                credentialsId: env.CREDENTIALS_ID,
+                verifyDeployments: true])
+
+                step([
+                $class: 'KubernetesEngineBuilder',
+                projectId: env.PROJECT_ID,
+                clusterName: env.CLUSTER_NAME,
+                location: env.LOCATION,
+                manifestPattern: 'k8s/ingress.yml',
                 credentialsId: env.CREDENTIALS_ID,
                 verifyDeployments: true])
         }
