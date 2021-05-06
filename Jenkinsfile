@@ -3,7 +3,10 @@ pipeline {
     agent any
     
     environment {
-        DATASTORE = credentials('datastore-creds')
+        PROJECT_ID = 'unique-poetry-309411'
+        CLUSTER_NAME = 'devamps'
+        LOCATION = 'us-east1-b'
+        CREDENTIALS_ID = 'unique-poetry-309411'
     }
 
     stages {
@@ -14,9 +17,14 @@ pipeline {
         }
         stage('Deploy'){
         steps{
-                kubernetesDeploy(configs: "k8s/api-deploy.yml" , kubeconfigId: "gke-config")
-                kubernetesDeploy(configs: "k8s/api-service.yml" , kubeconfigId: "gke-config")
-                kubernetesDeploy(configs: "k8s/api-ingress.yml" , kubeconfigId: "gke-config")
+                step([
+                $class: 'KubernetesEngineBuilder',
+                projectId: env.PROJECT_ID,
+                clusterName: env.CLUSTER_NAME,
+                location: env.LOCATION,
+                manifestPattern: 'k8s/api-deploy.yaml',
+                credentialsId: env.CREDENTIALS_ID,
+                verifyDeployments: true])
         }
         }
         }
