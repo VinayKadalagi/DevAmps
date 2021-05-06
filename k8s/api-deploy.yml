@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: devamps
-          image: asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.1
+          image: asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.3
           ports:
             - name: http-port
               containerPort: 5000
