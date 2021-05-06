@@ -22,7 +22,7 @@ pipeline {
                 projectId: env.PROJECT_ID,
                 clusterName: env.CLUSTER_NAME,
                 location: env.LOCATION,
-                manifestPattern: 'k8s/',
+                manifestPattern: 'k8s/api-deploy.yml',
                 credentialsId: env.CREDENTIALS_ID,
                 verifyDeployments: true])
         }
