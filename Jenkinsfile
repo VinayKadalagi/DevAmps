@@ -44,7 +44,7 @@ pipeline {
                 projectId: env.PROJECT_ID,
                 clusterName: env.CLUSTER_NAME,
                 location: env.LOCATION,
-                manifestPattern: 'k8s/ingress.yml',
+                manifestPattern: 'k8s/api-ingress.yml',
                 credentialsId: env.CREDENTIALS_ID,
                 verifyDeployments: true])
         }
