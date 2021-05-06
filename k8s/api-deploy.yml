@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devamps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devamps
+  template:
+    metadata:
+      labels:
+        app: devamps
+    spec:
+      containers:
+        - name: devamps
+          image: asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.1
+          ports:
+            - name: http-port
+              containerPort: 5000
+        
+        - name: redis
+          image: redis:alpine
+          ports:
+            - name: redis-port
+              containerPort: 6379

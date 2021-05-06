@@ -9,8 +9,15 @@ pipeline {
     stages {
         stage('Build') {
         steps {
-                sh "docker build --build-arg CREDS=${DATASTORE} ."
+                sh "docker build ."
             }
+        }
+        stage('Deploy'){
+        steps{
+                kubernetesDeploy(configs: "k8s/api-deploy.yml" , kubeconfigId: "gke-config")
+                kubernetesDeploy(configs: "k8s/api-service.yml" , kubeconfigId: "gke-config")
+                kubernetesDeploy(configs: "k8s/api-ingress.yml" , kubeconfigId: "gke-config")
+        }
         }
         }
   
