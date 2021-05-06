@@ -13,9 +13,9 @@ pipeline {
     stages {
         stage('Docker build & Push') {
         steps {
-                sh "docker build -t asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.2 ."
+                sh "docker build -t asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.3 ."
                 sh "cat ${GCR_CREDS} | docker login -u _json_key --password-stdin https://asia.gcr.io"
-                sh "docker push asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.2"
+                sh "docker push asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.3"
             }
         }
 
