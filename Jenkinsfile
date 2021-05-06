@@ -10,11 +10,13 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Docker build & Push') {
         steps {
-                sh "docker build ."
+                sh "docker build -t asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.1 ."
+                sh "docker push"
             }
         }
+
         stage('Deploy'){
         steps{
                 step([
