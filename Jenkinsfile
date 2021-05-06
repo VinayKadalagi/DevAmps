@@ -3,7 +3,7 @@ pipeline {
     agent any
     
     environment {
-        VERSION = "1.0.4"
+        VERSION = "1.0.5"
         PROJECT_ID = 'unique-poetry-309411'
         CLUSTER_NAME = 'devamps'
         LOCATION = 'us-east1-b'

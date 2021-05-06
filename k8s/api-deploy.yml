@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: devamps
-          image: asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.4
+          image: asia.gcr.io/unique-poetry-309411/gcf/devamps:1.0.5
           imagePullPolicy: Always
           ports:
             - name: http-port
